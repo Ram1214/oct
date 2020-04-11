@@ -17,3 +17,19 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+  
+  # Copy files over SSH
+# Copy files or build artifacts to a remote machine over SSH
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'azurewindevops'
+    sourceFolder: 'vars'
+    contents: 'orange.txt'
+    targetFolder: '/root'
+    #cleanTargetFolder: false # Optional
+    overwrite: true
+    #failOnEmptySource: false # Optional
+    #flattenFolders: false # Optional
+    readyTimeout: '20000'
+
+
